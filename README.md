@@ -41,72 +41,72 @@ The project involves trend analysis on the Google Quickdraw preprocessed dataset
   
 3) visualization of the above data.  
   
-All the visualization of the data in this project has been done using Tableau and some of the visualization snapshots can be found in [visualization](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/visualization/) folder in the project. We also have hosted the same tableau visualizations online in the link [here](https://public.tableau.com/profile/varnnitha#!/vizhome/CMPT732-BigDataTrio-GoogleQuickDrawInsights/FinalDash?publish=yes).  
+We have hosted the tableau visualizations online in the link [here](https://public.tableau.com/profile/varnnitha#!/vizhome/CMPT732-BigDataTrio-GoogleQuickDrawInsights/FinalDash?publish=yes).  
   
 ## Here are the Steps to Execute in the Project:  
   
-We are making use of the virtual machine (nml-cloud-13.cs.sfu.ca) part of the cluster for storing of the data and the Machine Learning Analysis. In order to run the generic insights mentioned above, we make use of the cluster. The dataset for the analysis can be downloaded from [here](https://www.kaggle.com/google/tinyquickdraw/download) and stored in the dataset folder. Please find more details on the same [here](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/RUNNING.txt).
+We are making use of the virtual machine (nml-cloud-13.cs.sfu.ca) part of the cluster for storing of the data and the Machine Learning Analysis. In order to run the generic insights mentioned above, we make use of the cluster. The dataset for the analysis can be downloaded from [here](https://www.kaggle.com/google/tinyquickdraw/download) and stored in the dataset folder. 
   
 ## File Details:  
   
-[mongoimport.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/db_loading_scripts/mongoimport.py)  
+# mongoimport.py
 - populate the data into MongoDB using the mongoimport cmd line utility.  
   
-[insight1.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/insight_analysis/insight1.py)  
+# insight1.py
 - generates insight of the most popular image at the country level.  
   
-[insight2_4.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/insight_analysis/insight2_4.py)  
+# insight2_4.py
 - generates insight of images which the application guessed correctly the most or the least.  
   
-[insight3.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/insight_analysis/insight3.py)  
+# insight3.py  
 - generates insight on what time of the day people of which country are busy using this application.  
   
-[insight5.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/insight_analysis/insight5.py)  
+# insight5.py  
 - generates insight on the number of strokes used to draw an image by the user Vs image being recognized as true.  
   
-[insight6.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/insight_analysis/insight6.py)  
+# insight6.py
 - generates insight on the user of which country recognized a given image as true maximum number of times.  
   
-[insight7.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/insight_analysis/insight7.py)  
+# insight7.py
 - generates insight on the average number of strokes used for a given image by users of each country.  
   
-[insight8.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/insight_analysis/insight8.py)  
+# insight8.py
 - generates insight on the percentage of users who drew a "circle" image in the Clockwise Direction or Anti-clockwise Direction.  
   
-[run_insights.sh](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/insight_analysis/run_insights.sh)  
+# run_insights.sh  
 - this file can be used to run all the insights in one shot or even each of the insights one by one.  
   
-[insight_ml1.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/machine_learning_analysis/insight_ml1.py)  
+# insight_ml1.py
 - this file does the classification on the data using Random Forest Classifier.  
   
-[insight_ml2.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/machine_learning_analysis/insight_ml2.py)  
+# insight_ml2.py  
 - this file does the classification on the data using K-Nearest Neighbour Classifier.  
   
-[insight_ml3.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/machine_learning_analysis/insight_ml3.py)  
+# insight_ml3.py  
 - this file does the classification on the data using the Decision Tree Classifier.  
   
-[insight_ml4.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/machine_learning_analysis/insight_ml4.py)  
+# insight_ml4.py  
 - this file does the classification on the data using the Gaussian Naive Bayes Classifier.  
   
-[run_classifier.sh](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/machine_learning_analysis/run_classifier.sh)  
+# run_classifier.sh  
 - this file can be used to run all the Classifiers or even individual classification as mentioned above.  
   
-[load_ml_data.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/machine_learning_analysis/load_ml_data.py)  
+# load_ml_data.py  
 - this file loads the required data that needed for running all of the above-mentioned ML models.  
   
-[ML_All_Comparison.py](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/machine_learning_analysis/ML_All_Comparison.py)  
+# ML_All_Comparison.py  
 - this file makes use of two .npy files to run the classification algorithm on 4 different ML classifiers: MLP, RandomForest, DecisionTree, NaiveBayes.  
   
 ## Folders:  
   
-[db_loading_scripts](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/db_loading_scripts/)  
+# db_loading_scripts
 - this folder contains all the datasets used for the project.  
   
-[insight_analysis](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/insight_analysis/)  
+# insight_analysis 
 - this folder contains files that are used to generate the generic set of insights in the project.  
   
-[machine_learning_analysis](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/machine_learning_analysis/)  
+# machine_learning_analysis 
 - this folder contains files that do the machine learning analysis for the various alogrithms included above.  
   
-[visualization](https://csil-git1.cs.surrey.sfu.ca/asundarr/bigdata1project/blob/master/visualization/)  
+# visualization
 - this folder contains the snapshots of the visualizations performed in the project.
