@@ -1,0 +1,89 @@
+STEPS TO RUN OUR PROJECT:
+-------------------------
+
+Note: Ensure that your public keys are added to the VM machine 
+nml-cloud-13.cs.sfu.ca before to access the machine successfully.
+
+The QuickDraw Dataset(which is approximately ~25GB) is already loaded in 
+the mongodb on the machine under db "BigDataTrio" and collection "QuickDrawData", 
+we suggest using the same to run the insights.
+If we want to load the data from the beginning into the mongodb, 
+you can find the steps to do the same below.
+
+Please use the Virtual Machine environment (nml-cloud-13.cs.sfu.ca) 
+to do the below mentioned steps:
+
+1a) Downloaded the dataset from (https://www.kaggle.com/google/tinyquickdraw/download) 
+and please ensure you save it in the dataset folder and unzip the data and 
+rename the dataset name as quickdraw_simplified. 
+
+Now your dataset location looks similiar to this "/home/ubuntu/dataset/quickdraw_simplified/"
+
+1b) create a database with name BigDataTrio and a collection with the 
+name QuickDrawData in mongodb server as below:
+
+ubuntu@nml-cloud-13:~$ mongo 
+MongoDB shell version v3.4.23
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.23
+>use BigDataTrio  
+switched to db BigDataTrio
+> db.createCollection("QuickDrawData")
+{ "ok" : 1 }
+> show collections 
+QuickDrawData
+
+1c) Populate the database and collection with this command - python mongoimport.py  
+
+Running Generic Insights: You can run these insights from the cluster 
+as below (ensure #module load spark is run before that):
+
+2) Insight-1 - 
+	spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight1.py
+
+3) Insight-2_4 - 
+	spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight2_4.py
+4) Insight-3 - 
+	spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight3.py
+
+5) Insight-5 - 
+	spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight5.py
+
+6) Insight-6 - 
+	spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight6.py
+
+7) Insight-7 - 
+	spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight7.py
+
+8) Insight-8 - 
+	spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight8.py
+
+9) run_insights.sh - 
+	sh run_insights.sh [choose any of these options [ALL|insight1|insight2_4|insight3|insight5|insight6|insight7|insight8]]
+
+Machine Learning Analysis: The machine learning analysis involving various 
+classification algorithms needs to be run on Virtual Machine 
+environment (nml-cloud-13.cs.sfu.ca) as follows:
+
+10) Load the strokes dataset collection with the command - 
+	${SPARK_HOME}/bin/spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 load_ml_data.py  
+
+Steps to run the insights in machine learning is as below:
+
+11) ML Insight-1 - 
+	${SPARK_HOME}/bin/spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight_ml1.py
+
+12) ML Insight-2 - 
+	${SPARK_HOME}/bin/spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight_ml2.py 
+
+13) ML Insight-3 - 
+	${SPARK_HOME}/bin/spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight_ml3.py 
+
+14) ML Insight-4 - 
+	${SPARK_HOME}/bin/spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.4.1 insight_ml4.py 
+
+15) run_classifier.sh -
+	sh run_classifier.sh [choose any of these options [ALL|Random_Forest|KNN|Decision_Tree|Gaussian_NB]]
+
+16) ML All Comparison on the .npy files- 
+	${SPARK_HOME}/bin/spark-submit ML_All_Comparison.py 
